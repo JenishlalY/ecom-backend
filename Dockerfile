@@ -9,6 +9,8 @@ FROM eclipse-temurin:21-jdk
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
+# Render uses dynamic port
 ENV PORT 10000
 EXPOSE 10000
+
 ENTRYPOINT ["sh", "-c", "java -Dserver.port=$PORT -jar app.jar"]
